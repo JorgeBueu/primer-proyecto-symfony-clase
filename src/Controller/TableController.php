@@ -8,8 +8,8 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class TableController extends AbstractController
 {
-    #[Route('/table/{filas}/{cols<[1-9]\d*>}', name: 'app_table', requirements: ["filas" => "[1-9]\d*"])]
-    public function index(int $filas = 4, int $cols = 4): Response
+    #[Route('/table/{filas}/{cols<[1-9]\d*>?4}', name: 'app_table', requirements: ["filas" => "[1-9]\d*"])]
+    public function index(int $cols, int $filas = 4): Response //los valores por defecto van al final, sino da fallo
     {
         $array = [];
         for ($i=0; $i < $filas ; $i++) {
